@@ -1,6 +1,5 @@
 on:
   repository_dispatch:
-    types: [create-pull-request]
 name: Create Pull Request
 jobs:
   build:
