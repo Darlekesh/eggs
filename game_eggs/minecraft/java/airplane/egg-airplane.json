@@ -7,16 +7,20 @@
     "exported_at": "2021-12-09T13:31:17-05:00",
     "name": "Airplane",
     "author": "info@ttr3.eu",
-    "description": "A stable, optimized and fast Paper fork.\r\nhttps:\/\/github.com\/TECHNOVE\/Airplane",
+    "description": "A stable, optimized and fast Paper fork.\r\nhttps://github.com/TECHNOVE/Airplane",
     "features": [
         "eula",
         "java_version"
     ],
     "images": [
-        "ghcr.io\/pterodactyl\/yolks:java_17",
-        "ghcr.io\/pterodactyl\/yolks:java_16",
-        "ghcr.io\/pterodactyl\/yolks:java_11",
-        "ghcr.io\/pterodactyl\/yolks:java_8"
+        "ghcr.io/pterodactyl/yolks:java_17",
+        "ghcr.io/pterodactyl/yolks:java_16",
+        "ghcr.io/pterodactyl/yolks:java_11",
+        "ghcr.io/pterodactyl/yolks:java_8",
+        "ghcr.io/software-noob/arm64:java_17",
+        "ghcr.io/software-noob/arm64:java_16",
+        "ghcr.io/software-noob/arm64:java_11",
+        "ghcr.io/software-noob/arm64:java_8"
     ],
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
@@ -28,7 +32,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "apt update\r\napt -y install wget\r\ncd \/mnt\/server\r\nif [ -z \"$BUILDVERSION\" ] || [ \"$BUILDVERSION\" == \"latest\" ]; then\r\n    wget https:\/\/ci.tivy.ca\/job\/Airplane-${VER}\/lastSuccessfulBuild\/artifact\/launcher-airplane.jar -O ${SERVER_JARFILE}\r\nelse\r\n    wget https:\/\/ci.tivy.ca\/job\/Airplane-${VER}\/${BUILDVERSION}\/artifact\/launcher-airplane.jar -O ${SERVER_JARFILE}\r\nfi",
+            "script": "apt update\r\napt -y install wget\r\ncd /mnt/server\r\nif [ -z \"$BUILDVERSION\" ] || [ \"$BUILDVERSION\" == \"latest\" ]; then\r\n    wget https://ci.tivy.ca/job/Airplane-${VER}/lastSuccessfulBuild/artifact/launcher-airplane.jar -O ${SERVER_JARFILE}\r\nelse\r\n    wget https://ci.tivy.ca/job/Airplane-${VER}/${BUILDVERSION}/artifact/launcher-airplane.jar -O ${SERVER_JARFILE}\r\nfi",
             "container": "debian:buster-slim",
             "entrypoint": "bash"
         }
@@ -41,7 +45,7 @@
             "default_value": "server.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            "rules": "required|regex:/^([\\w\\d._-]+)(\\.jar)$/"
         },
         {
             "name": "Minecraft Version",
@@ -54,7 +58,7 @@
         },
         {
             "name": "Build version",
-            "description": "Here you can set which build version you want to use from Airplane release\r\n(You can see the version from this site https:\/\/ci.tivy.ca)\r\n\r\nExample: https:\/\/ci.tivy.ca\/job\/Airplane-1.17\/(Build version)\/artifact\/launcher-airplane.jar",
+            "description": "Here you can set which build version you want to use from Airplane release\r\n(You can see the version from this site https://ci.tivy.ca)\r\n\r\nExample: https://ci.tivy.ca/job/Airplane-1.17/(Build version)/artifact/launcher-airplane.jar",
             "env_variable": "BUILDVERSION",
             "default_value": "latest",
             "user_viewable": true,

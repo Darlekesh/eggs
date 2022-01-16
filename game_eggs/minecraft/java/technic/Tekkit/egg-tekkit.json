@@ -13,10 +13,14 @@
         "java_version"
     ],
     "images": [
-        "ghcr.io\/pterodactyl\/yolks:java_8",
-        "ghcr.io\/pterodactyl\/yolks:java_11",
-        "ghcr.io\/pterodactyl\/yolks:java_16",
-        "ghcr.io\/pterodactyl\/yolks:java_17"
+        "ghcr.io/pterodactyl/yolks:java_8",
+        "ghcr.io/pterodactyl/yolks:java_11",
+        "ghcr.io/pterodactyl/yolks:java_16",
+        "ghcr.io/pterodactyl/yolks:java_17",
+        "ghcr.io/software-noob/arm64:java_17",
+        "ghcr.io/software-noob/arm64:java_16",
+        "ghcr.io/software-noob/arm64:java_11",
+        "ghcr.io/software-noob/arm64:java_8"
     ],
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Tekkit.jar",
@@ -28,7 +32,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napk update\r\napk add curl\r\n\r\ncd \/mnt\/server\r\n\r\ncurl -sSL https:\/\/servers.technicpack.net\/Technic\/servers\/tekkitmain\/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nunzip Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm -rf Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm launch.bat\r\n\r\nrm launch.sh\r\n\r\nif [ ! -f server.properties ]; then\r\n    echo -e \"Downloading MC server.properties\"\r\n    curl -o server.properties https:\/\/raw.githubusercontent.com\/parkervcp\/eggs\/master\/game_eggs\/minecraft\/java\/server.properties\r\nfi",
+            "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\napk update\r\napk add curl\r\n\r\ncd /mnt/server\r\n\r\ncurl -sSL https://servers.technicpack.net/Technic/servers/tekkitmain/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nunzip Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm -rf Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm launch.bat\r\n\r\nrm launch.sh\r\n\r\nif [ ! -f server.properties ]; then\r\n    echo -e \"Downloading MC server.properties\"\r\n    curl -o server.properties https://raw.githubusercontent.com/parkervcp/eggs/master/game_eggs/minecraft/java/server.properties\r\nfi",
             "container": "alpine:3.9",
             "entrypoint": "ash"
         }
